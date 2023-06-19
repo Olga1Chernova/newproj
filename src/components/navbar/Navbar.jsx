@@ -1,5 +1,5 @@
 "use client"
-
+import css from './navbar.module.css'
 import Link from "next/link";
 
 const links = [
@@ -38,12 +38,13 @@ const links = [
 
 const Navbar = () => {
   return (
-    <div>
-        <Link href='/'>posts App</Link>
-        <div>
+    <div className={css.container}>
+        <Link href='/' className={css.logo}>Posts App</Link>
+        <div className={css.links}>
             {links.map(link => (
-                <Link key={link.id} href={link.url}>{link.title}</Link>
-            ))} 
+                <Link key={link.id} href={link.url} className={css.link}>{link.title}</Link>
+            ))}
+        <button className={css.logout} onClick={()=>{}}>Logout</button>
         </div>
     </div>
   )
