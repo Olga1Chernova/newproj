@@ -1,4 +1,5 @@
 "use client"
+import DarkModeToggleBtn from "@/components/DarkModeToggleBtn/DarkModeToggleBtn";
 import css from './navbar.module.css'
 import Link from "next/link";
 
@@ -41,10 +42,11 @@ const Navbar = () => {
     <div className={css.container}>
         <Link href='/' className={css.logo}>Posts App</Link>
         <div className={css.links}>
+          <DarkModeToggleBtn /> 
             {links.map(link => (
                 <Link key={link.id} href={link.url} className={css.link}>{link.title}</Link>
             ))}
-        <button className={css.logout} onClick={()=>{}}>Logout</button>
+          <button className={css.logout} onClick={()=>{}}>Logout</button>
         </div>
     </div>
   )

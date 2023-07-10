@@ -2,8 +2,20 @@ import Image from 'next/image'
 
 import css from './page.module.css'
 
-const Post = () => {
-  
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    next: { revalidate: 10 },
+  });
+
+  if (!res.ok) {
+    throw new Error("failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const Post = async ({params}) => {
+  const data = await getData(params.id);
   return (
     <div className={css.container}>
       <div className={css.top}>
